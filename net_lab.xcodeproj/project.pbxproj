@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		F897C64C1D8933D500330D91 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = F897C64B1D8933D500330D91 /* main.c */; };
+		F8A649391D893D5100E5AFFC /* client.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F8A649371D893D5100E5AFFC /* client.cpp */; };
+		F8A6493A1D893D5100E5AFFC /* server.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F8A649381D893D5100E5AFFC /* server.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -24,7 +25,9 @@
 
 /* Begin PBXFileReference section */
 		F897C6481D8933D500330D91 /* net_lab */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = net_lab; sourceTree = BUILT_PRODUCTS_DIR; };
-		F897C64B1D8933D500330D91 /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
+		F8A649371D893D5100E5AFFC /* client.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = client.cpp; sourceTree = "<group>"; };
+		F8A649381D893D5100E5AFFC /* server.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = server.cpp; sourceTree = "<group>"; };
+		F8F97BF61D8A33FD00FEC1C7 /* header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = header.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,7 +60,9 @@
 		F897C64A1D8933D500330D91 /* net_lab */ = {
 			isa = PBXGroup;
 			children = (
-				F897C64B1D8933D500330D91 /* main.c */,
+				F8F97BF61D8A33FD00FEC1C7 /* header.h */,
+				F8A649371D893D5100E5AFFC /* client.cpp */,
+				F8A649381D893D5100E5AFFC /* server.cpp */,
 			);
 			path = net_lab;
 			sourceTree = "<group>";
@@ -118,7 +123,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F897C64C1D8933D500330D91 /* main.c in Sources */,
+				F8A649391D893D5100E5AFFC /* client.cpp in Sources */,
+				F8A6493A1D893D5100E5AFFC /* server.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -158,7 +164,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
@@ -193,7 +199,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
 			};
@@ -202,6 +208,7 @@
 		F897C6501D8933D500330D91 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -209,6 +216,7 @@
 		F897C6511D8933D500330D91 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -232,6 +240,7 @@
 				F897C6511D8933D500330D91 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
