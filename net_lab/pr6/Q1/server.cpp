@@ -3,6 +3,7 @@
 # define LISTEN_QUEUE_SIZE 5
 int main() {
     
+    
     //서버의 listen 소켓 데이터 구조를 생성하시오
     struct sockaddr_in listenSocket;
     memset(&listenSocket, 0, sizeof(listenSocket));
@@ -31,25 +32,45 @@ int main() {
         struct sockaddr_in connectSocket, peerSocket;
         socklen_t connectSocketLength = sizeof(connectSocket);
         
-        //클라이언트의 접속 요청을 허가하시오
+        //클라이언트의 접속 요청을 허가하면 껍데기 connectSocekt 구조체에 클라이언트에 대한 정보들이 들어감
         int connectFD = accept(listenFD, (struct sockaddr*)&connectSocket, &connectSocketLength);
         
-        getpeername(connectFD, (struct sockaddr*)&peerSocket, &connectSocketLength);
-        char peerName[sizeof(peerSocket.sin_addr) + 1] = {0};
+        int integer1, integer2, sum;
+        int readBytes, writtenBytes;
+        char sendBuffer[BUFFER_SIZE];
+        char receiveBuffer[BUFFER_SIZE];
         
-        sprintf(peerName, "%s", inet_ntoa(peerSocket.sin_addr));
-        printf("Client : %s\n", peerName);
+        while (true) {
         
-        
-        char buffer[BUFFER_SIZE] = {0};
-        sprintf(buffer, "Hello\n");
-        write(connectFD, buffer, strlen(buffer));
-        
+            memset(sendBuffer, 0, sizeof(BUFFER_SIZE));
+            memset(receiveBuffer, 0, sizeof(BUFFER_SIZE));
+            
+            readBytes = read(connectFD, receiveBuffer, BUFFER_SIZE);
+            
+            if (readBytes < 0) {
+                printf("Read error");
+                fflush(stdout);
+                break;
+            } else if (readBytes == 0) {
+                printf("connection with user is closed! \n");
+                fflush(stdout);
+                break;
+            }
+            
+            sscanf(receiveBuffer, "%d %d", &integer1, &integer2);
+            
+            sum = integer1 + integer2;
+            writtenBytes = sprintf(sendBuffer, "%d", sum);
+            writtenBytes = write(connectFD, sendBuffer, sizeof(sendBuffer));
+            if (writtenBytes <= 0) {
+                printf("Write error");
+                break;
+            }
+        }
         //클라이언트와의 접속을 끊으시오
         close(connectFD);
     }
     //서버용 리슨 소켓을 닫으시오
-    //close(listenFD);
+    close(listenFD);
     return 0;
-    
 }
